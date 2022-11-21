@@ -18,6 +18,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../views/RegisterView.vue')
   },
   {
+    path: '/allUsers',
+    name: 'UsersList',
+    component: () => import(/* webpackChunkName: "userslist" */ '../views/UsersList.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'PageNotFound',
     component: () => import(/* webpackChunkName: "pagenotfound" */ '../views/PageNotFound.vue')

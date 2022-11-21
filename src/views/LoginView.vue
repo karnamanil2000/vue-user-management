@@ -39,9 +39,12 @@ export default {
   methods: {
     async handleSubmit () {
       try {
-        console.log(this.loginDetails)
         const response = await LoginService.signInUser(this.loginDetails)
-        console.log(response.data, 'data')
+        if (response.data.value.dbResponseDto.message === 'User Found') {
+          window.alert('User logged in Successfully')
+          localStorage.setItem('token', response.data.value.token)
+          this.$router.push('/allUsers')
+        }
       } catch (error) {
         console.log('error', error.response.data.errors[0])
         window.alert(error.response.data.errors[0])

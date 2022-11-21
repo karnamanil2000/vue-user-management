@@ -7,7 +7,7 @@ export class LoginService {
       const dataURL = `${this.serverURL}/user/getallusers`
       return axios.get(dataURL, {
         headers: {
-          Authorization: 'Bearer' + localStorage.getItem('token')
+          Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       })
     }
@@ -23,22 +23,6 @@ export class LoginService {
     }
 }
 
-/*
-
-, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Accept,authorization,Authorization, Content-Type'
-        }
-      }
-
-, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-        }
-      }
 // function parseJwt (token) {
 //     var base64Url = token.split('.')[1];
 //     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -49,11 +33,9 @@ export class LoginService {
 //     return JSON.parse(jsonPayload);
 // }
 
-function parseJwt (token) {
-    return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-}
+// function parseJwt (token) {
+//     return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+// }
 
-var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inlhc3dhMUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiMjMyMzIzIiwibmJmIjoxNjY4MTM3NDk5LCJleHAiOjE2NjgyMjM4OTksImlhdCI6MTY2ODEzNzQ5OX0.VUQYyXpkmQQUARdhB9Uor5QRuTygUcY6VrIXLsoYWzo"
-console.log(parseJwt(token))
-
-  */
+// var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inlhc3dhMUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiMjMyMzIzIiwibmJmIjoxNjY4MTM3NDk5LCJleHAiOjE2NjgyMjM4OTksImlhdCI6MTY2ODEzNzQ5OX0.VUQYyXpkmQQUARdhB9Uor5QRuTygUcY6VrIXLsoYWzo"
+// console.log(parseJwt(token))

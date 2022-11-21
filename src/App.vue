@@ -2,9 +2,14 @@
   <v-app>
     <v-app-bar app dark color="blue">
       <v-toolbar-title>Vue User Management</v-toolbar-title>
-      <router-link to="/"><v-btn text rounded>Home</v-btn></router-link>
-      <router-link to="/login"><v-btn text rounded>Login</v-btn></router-link>
-      <router-link to="/register"><v-btn text rounded>Register</v-btn></router-link>
+      <div v-if="!userLoggedIn">
+        <router-link to="/"><v-btn text rounded>Home</v-btn></router-link>
+        <router-link to="/login"><v-btn text rounded>Login</v-btn></router-link>
+        <router-link to="/register"><v-btn text rounded>Register</v-btn></router-link>
+      </div>
+      <div v-else>
+        <v-btn text rounded @click="logout()">Log Out</v-btn>
+      </div>
     </v-app-bar>
     <!-- <v-main>
     </v-main> -->
@@ -21,7 +26,20 @@ export default {
 
   data () {
     return {
-      showPassword: false
+      showPassword: false,
+      userLoggedIn: false
+    }
+  },
+  methods: {
+    logout () {
+      localStorage.removeItem('token')
+      this.userLoggedIn = true
+      this.$router.push('/login')
+    }
+  },
+  mounted () {
+    if (localStorage.getItem('token') !== null) {
+      this.userLoggedIn = true
     }
   }
 }

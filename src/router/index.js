@@ -4,22 +4,32 @@ import HomeView from '../views/HomeView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'HomeView',
     component: HomeView
   },
   {
     path: '/login',
-    name: 'login',
+    name: 'LoginView',
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
   },
   {
     path: '/register',
-    name: 'register',
-    component: () => import(/* webpackChunkName: "login" */ '../views/RegisterView.vue')
+    name: 'RegisterView',
+    component: () => import(/* webpackChunkName: "register" */ '../views/RegisterView.vue')
+  },
+  {
+    path: '/allUsers',
+    name: 'UsersList',
+    component: () => import(/* webpackChunkName: "userslist" */ '../views/UsersList.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'PageNotFound',
+    component: () => import(/* webpackChunkName: "pagenotfound" */ '../views/PageNotFound.vue')
   },
   {
     path: '/about',
-    name: 'about',
+    name: 'AboutView',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
